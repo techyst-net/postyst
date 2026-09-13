@@ -12,10 +12,10 @@ function toQueryString(obj: Record<string, any>): string {
   return params.toString();
 }
 
-export default class Zeshan {
+export default class Postyst {
   constructor(
     private _apiKey: string,
-    private _path = 'https://zeshan.local'
+    private _path = 'https://postyst.techyst.net'
   ) {}
 
   async post(posts: CreatePostDto) {

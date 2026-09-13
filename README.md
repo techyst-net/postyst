@@ -1,4 +1,4 @@
-# Zeshan Social
+# Postyst Social
 
 Social media scheduling and management: compose once and publish to X, LinkedIn,
 Facebook, Instagram, Threads, Reddit, Mastodon, YouTube, TikTok, Bluesky,

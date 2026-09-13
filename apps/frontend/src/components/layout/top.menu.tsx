@@ -246,7 +246,7 @@ export const useMenuItem = () => {
           />
         </svg>
       ),
-      path: 'https://zeshan.local',
+      path: 'https://postyst.techyst.net',
       role: ['ADMIN', 'SUPERADMIN', 'USER'],
       requireBilling: true,
     },

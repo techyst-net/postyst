@@ -1,5 +1,5 @@
 {
-	"name": "Zeshan Dev Container",
+	"name": "Postyst Dev Container",
 	"image": "localhost/postiz-devcontainer",
 	"features": {},
 	"customizations": {

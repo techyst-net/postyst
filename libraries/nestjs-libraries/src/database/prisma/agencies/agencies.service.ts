@@ -37,21 +37,21 @@ export class AgenciesService {
     if (action === 'approve') {
       await this._notificationService.sendEmail(
         agency?.user?.email!,
-        'Your Agency has been approved and added to Zeshan 🚀',
+        'Your Agency has been approved and added to Postyst 🚀',
         `
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Agency has been approved and added to Zeshan 🚀</title>
+    <title>Your Agency has been approved and added to Postyst 🚀</title>
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
   Hi there, <br /><br />
-  Your agency ${agency?.name} has been added to Zeshan!<br />
-  You can <a href="https://zeshan.local${agency?.slug}">check it here</a><br />
-  It will appear on the main agency of Zeshan in the next 24 hours.<br /><br />
+  Your agency ${agency?.name} has been added to Postyst!<br />
+  You can <a href="https://postyst.techyst.net${agency?.slug}">check it here</a><br />
+  It will appear on the main agency of Postyst in the next 24 hours.<br /><br />
 </body>
 </html>`
       );
@@ -73,7 +73,7 @@ export class AgenciesService {
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
   Hi there, <br /><br />
-  Your agency ${agency?.name} has been declined to Zeshan!<br />
+  Your agency ${agency?.name} has been declined to Postyst!<br />
   If you think we have made a mistake, please reply to this email and let us know
 </body>
 </html>`
@@ -85,7 +85,7 @@ export class AgenciesService {
   async createAgency(user: User, body: CreateAgencyDto) {
     const agency = await this._agenciesRepository.createAgency(user, body);
     await this._notificationService.sendEmail(
-      'noreply@zeshan.local',
+      'noreply@techyst.local',
       'New agency created',
       `
 <html lang="en">
@@ -193,10 +193,10 @@ export class AgenciesService {
         </tr>
         <tr>
             <td style="padding: 20px; text-align: center; background-color: #000;">
-                <a href="https://zeshan.local${
+                <a href="https://postyst.techyst.net${
                   agency.id
                 }" style="margin: 0 10px; text-decoration: none; color: #007bff;">To approve click here</a><br /><br /><br />
-                <a href="https://zeshan.local${
+                <a href="https://postyst.techyst.net${
                   agency.id
                 }" style="margin: 0 10px; text-decoration: none; color: #007bff;">To decline click here</a><br /><br /><br />
             </td>

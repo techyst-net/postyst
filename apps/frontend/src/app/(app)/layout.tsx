@@ -44,7 +44,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         {!!process.env.DATAFAST_WEBSITE_ID && (
           <Script
             data-website-id={process.env.DATAFAST_WEBSITE_ID}
-            data-domain="zeshan.local"
+            data-domain="postyst.techyst.net"
             src="https://datafa.st/js/script.js"
             strategy="afterInteractive"
           />
@@ -103,7 +103,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
             <FacebookComponent />
             <GoogleTagManagerComponent gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
             <Plausible
-              domain={!!process.env.IS_GENERAL ? 'zeshan.local' : 'zeshan.local'}
+              domain={!!process.env.IS_GENERAL ? 'postyst.techyst.net' : 'postyst.techyst.net'}
             >
               <PHProvider
                 phkey={process.env.NEXT_PUBLIC_POSTHOG_KEY}

@@ -59,7 +59,7 @@ jobs:
         id: probe
         run: |
           git config user.name "postiz-merge-bot"
-          git config user.email "bot@postiz.com"
+          git config user.email "bot@techyst.com"
 
           if git merge --no-commit --no-ff origin/main; then
             git merge --abort 2>/dev/null || git reset --hard HEAD

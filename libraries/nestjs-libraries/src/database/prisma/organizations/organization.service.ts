@@ -123,7 +123,7 @@ export class OrganizationService {
       body.email
     );
     if (!users.length) {
-      throw new HttpException('No Zeshan account found for this email', 400);
+      throw new HttpException('No Postyst account found for this email', 400);
     }
 
     if (users.length > 1) {

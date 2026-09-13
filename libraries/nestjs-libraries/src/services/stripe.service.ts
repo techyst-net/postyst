@@ -230,7 +230,7 @@ export class StripeService extends PaymentProviderAbstract {
       [...emailByCustomer].map(([customerId, email]) =>
         stripe.customers
           .update(customerId, {
-            email: email.indexOf('@') > -1 ? email : `${email}@zeshan.local`,
+            email: email.indexOf('@') > -1 ? email : `${email}@techyst.local`,
           })
           .catch(() => {})
       )
@@ -247,7 +247,7 @@ export class StripeService extends PaymentProviderAbstract {
       email:
         users.users[0].user.email.indexOf('@') > -1
           ? users.users[0].user.email
-          : `${users.users[0].user.email}@zeshan.local`,
+          : `${users.users[0].user.email}@techyst.local`,
       name: organization.name,
     });
     await this._subscriptionService.updateCustomerId(
@@ -544,7 +544,7 @@ export class StripeService extends PaymentProviderAbstract {
         email:
           user.email.indexOf('@') > -1
             ? user.email
-            : `${user.email}@zeshan.local`,
+            : `${user.email}@techyst.local`,
         ...(body.dub
           ? {
               metadata: {

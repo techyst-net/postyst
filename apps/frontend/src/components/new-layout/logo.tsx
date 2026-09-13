@@ -10,7 +10,7 @@ export const Logo = () => {
       fill="none"
       className="mt-[8px] min-w-[60px] min-h-[60px]"
       role="img"
-      aria-label="Zeshan"
+      aria-label="Postyst"
     >
       <defs>
         <linearGradient id="zeshan-logo-gradient" x1="0" y1="0" x2="1" y2="1">

@@ -9,7 +9,7 @@ export const LogoTextComponent = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Zeshan"
+      aria-label="Postyst"
     >
       <g transform="translate(2 4) scale(0.39)">
         <rect width="64" height="64" rx="14" fill="#6366F1" />
@@ -24,7 +24,7 @@ export const LogoTextComponent = () => {
         letterSpacing="-0.3"
         fill="currentColor"
       >
-        Zeshan
+        Postyst
       </text>
     </svg>
   );

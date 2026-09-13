@@ -67,8 +67,8 @@ export class UsersService {
           this._notificationService
             .sendEmail(
               account.email,
-              'Your Zeshan login was changed',
-              `An administrator changed the login for your Zeshan account. ` +
+              'Your Postyst login was changed',
+              `An administrator changed the login for your Postyst account. ` +
                 `You can now sign in using ${account.email}. ` +
                 `Your subscription and plan were not changed by this switch — ` +
                 `if you intended to cancel a subscription, please do that ` +

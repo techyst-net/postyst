@@ -1,4 +1,4 @@
-# Postiz ships only Dockerfile.dev. This is the same build without the dev
+# Postyst ships only Dockerfile.dev. This is the same build without the dev
 # tooling, running backend + workers + cron under pm2 in one container.
 FROM node:22.20-bookworm-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
