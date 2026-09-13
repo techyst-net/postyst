@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, Fragment, useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
 import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
 import useSWR from 'swr';
 import { orderBy } from 'lodash';
@@ -9,20 +9,6 @@ import SafeImage from '@gitroom/react/helpers/safe.image';
 import { AddProviderComponent } from '@gitroom/frontend/components/launches/add.provider.component';
 import { useT } from '@gitroom/react/translation/get.transation.service.client';
 import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import {
-  AnyMcpClient,
-  CopyButton,
-  getMcpConfig,
-  getMcpOauthUrl,
-  isChatOnlyMcpClient,
-  localCliSteps,
-  McpAuth,
-  McpClient,
-  mcpClients,
-} from '@gitroom/frontend/components/public-api/public.component';
-import { McpClientIcon } from '@gitroom/frontend/components/public-api/mcp.client.icons';
 
 interface OnboardingModalProps {
   onClose: () => void;
@@ -33,18 +19,11 @@ export const OnboardingModal: FC<OnboardingModalProps> = ({ onClose }) => {
   const modals = useModals();
   const t = useT();
 
-  const steps = useMemo(
-    () => [
-      t('connect_channels', 'Connect Channels'),
-      t('connect_agents', 'Connect Agents'),
-      t('watch_tutorial', 'Watch Tutorial'),
-    ],
-    [t]
-  );
-
   return (
-    <div className="w-full min-h-full flex-1 p-[24px] flex relative">
-      <style>{`#support-discord {display: none}`}</style>
+    <div className="w-full min-h-full flex-1 p-[40px] flex relative">
+      <style>
+        {`#support-discord {display: none}`}
+      </style>
       <div className="flex flex-1 bg-newBgColorInner rounded-[20px] flex-col relative">
         <button
           className="outline-none absolute end-[20px] top-[20px] mantine-UnstyledButton-root mantine-ActionIcon-root hover:bg-tableBorder cursor-pointer mantine-Modal-close mantine-1dcetaa"
@@ -66,37 +45,51 @@ export const OnboardingModal: FC<OnboardingModalProps> = ({ onClose }) => {
             ></path>
           </svg>
         </button>
-        <div className="flex-1 flex p-[32px]">
+        <div className="flex-1 flex p-[40px]">
           <div className="flex flex-col gap-[24px] flex-1">
             {/* Step indicators */}
             <div className="flex items-center justify-center gap-[16px]">
-              {steps.map((label, index) => (
-                <Fragment key={label}>
-                  {index > 0 && (
-                    <div className="w-[40px] h-[2px] bg-boxFocused" />
+              <div className="flex items-center gap-[8px]">
+                <div
+                  className={clsx(
+                    'w-[32px] h-[32px] rounded-full flex items-center justify-center text-[14px] font-semibold transition-colors',
+                    step === 1
+                      ? 'bg-boxFocused text-textItemFocused'
+                      : 'bg-newTableHeader'
                   )}
-                  <div className="flex items-center gap-[8px]">
-                    <div
-                      className={clsx(
-                        'w-[32px] h-[32px] rounded-full flex items-center justify-center text-[14px] font-semibold transition-colors',
-                        step === index + 1
-                          ? 'bg-boxFocused text-textItemFocused'
-                          : 'bg-newTableHeader'
-                      )}
-                    >
-                      {index + 1}
-                    </div>
-                    <span
-                      className={clsx(
-                        'text-[14px]',
-                        step === index + 1 ? 'font-medium' : 'text-textColor'
-                      )}
-                    >
-                      {label}
-                    </span>
-                  </div>
-                </Fragment>
-              ))}
+                >
+                  1
+                </div>
+                <span
+                  className={clsx(
+                    'text-[14px]',
+                    step === 1 ? 'font-medium' : 'text-textColor'
+                  )}
+                >
+                  {t('connect_channels', 'Connect Channels')}
+                </span>
+              </div>
+              <div className="w-[40px] h-[2px] bg-boxFocused" />
+              <div className="flex items-center gap-[8px]">
+                <div
+                  className={clsx(
+                    'w-[32px] h-[32px] rounded-full flex items-center justify-center text-[14px] font-semibold transition-colors',
+                    step === 2
+                      ? 'bg-boxFocused text-textItemFocused'
+                      : 'bg-newTableHeader'
+                  )}
+                >
+                  2
+                </div>
+                <span
+                  className={clsx(
+                    'text-[14px]',
+                    step === 2 ? 'font-medium' : 'text-textColor'
+                  )}
+                >
+                  {t('watch_tutorial', 'Watch Tutorial')}
+                </span>
+              </div>
             </div>
 
             {/* Step content */}
@@ -107,13 +100,7 @@ export const OnboardingModal: FC<OnboardingModalProps> = ({ onClose }) => {
               />
             )}
             {step === 2 && (
-              <OnboardingStep2
-                onBack={() => setStep(1)}
-                onNext={() => setStep(3)}
-              />
-            )}
-            {step === 3 && (
-              <OnboardingStep3 onBack={() => setStep(2)} onFinish={onClose} />
+              <OnboardingStep2 onBack={() => setStep(1)} onFinish={onClose} />
             )}
           </div>
         </div>
