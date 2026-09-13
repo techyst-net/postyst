@@ -16,6 +16,13 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc* ./
 RUN pnpm install --no-frozen-lockfile --ignore-scripts
 
 COPY . .
+
+# The install above used --ignore-scripts, which also skips the native builds.
+# bcrypt ships no prebuilt binding for this image, so without this the backend
+# starts, fails to require bcrypt, and pm2 restarts it forever while the
+# frontend keeps serving — which looks like a CORS fault from the browser.
+RUN pnpm rebuild bcrypt
+
 RUN pnpm run prisma-generate
 RUN pnpm run build
 

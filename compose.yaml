@@ -16,7 +16,11 @@ services:
     restart: unless-stopped
     pull_policy: always
     ports:
+    # 4200 is the Next frontend, 3000 the NestJS API. Both are published
+    # because api.postyst.techyst.net has to reach the API directly; routing it
+    # at 4200 lands on the frontend, which answers without CORS headers.
     - 3060:4200
+    - 127.0.0.1:3061:3000
     logging:
       driver: json-file
       options:
